@@ -11,7 +11,10 @@ public class Category
   public required string Name { get; set; }
   [StringLength(150)]
   public string Description { get; set; } = string.Empty;
-  [StringLength(15)]
+  [StringLength(9)]
   public string Color { get; set; } = string.Empty;
   public DateTime CreatedAt { get; set; }
+
+  // Navigation Properties
+  public ICollection<Activity> Activities { get; set; } = [];
 }
