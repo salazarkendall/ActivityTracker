@@ -6,7 +6,7 @@ public class Activity
 {
   [Key]
   public Guid Id { get; set; }
-  public Guid CategoryId { get; set; }
+  public Guid? CategoryId { get; set; }
   [Required]
   [StringLength(100)]
   public string Title { get; set; } = string.Empty;

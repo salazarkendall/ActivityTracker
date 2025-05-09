@@ -13,6 +13,6 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 var app = builder.Build();
 
 // Add middlewares:
-app.MapControllers();
+app.MapGroup("/api").MapControllers();
 
 app.Run();

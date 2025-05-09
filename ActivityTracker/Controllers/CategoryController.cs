@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace ActivityTracker.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("[controller]")]
 public class CategoryController : ControllerBase
 {
   private readonly ApplicationDbContext context;
@@ -45,9 +45,11 @@ public class CategoryController : ControllerBase
   public async Task<ActionResult> Delete(Guid id)
   {
     var category = await context.Categories.FirstOrDefaultAsync(category => category.Id == id);
-    if (category is null) return NotFound();
-    context.Categories.Remove(category);
-    await context.SaveChangesAsync();
-    return Ok();
+    if (category is not null)
+    {
+      context.Categories.Remove(category);
+      await context.SaveChangesAsync();
+    }
+    return NoContent();
   }
 }
